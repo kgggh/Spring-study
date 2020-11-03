@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="EventDAO">
+
+	<!--이벤트 등록 -->
+	<insert id="eventIns" parameterType="event">
+	
+		INSERT INTO EVENT (E_TITLE, E_CONTENT, E_DATE, E_HIT, C_ID)
+		VALUES ( #{e_title}, #{e_content},SYSDATE,0,#{c_id})
+	</insert>
+	
+	<!--이벤트 수정 -->
+	<update id="eventMod" parameterType="event">
+		UPDATE EVENT SET E_TITLE = #{e_title}, E_CONTENT = #{e_content} , C_ID = #{c_id}
+		WHERE E_ID = #{e_id}
+	</update>
+	
+	<!--이벤트 삭제 -->
+	<delete id="eventDel" parameterType="event">
+		DELETE FROM EVENT WHERE E_ID = #{e_id}
+	</delete>
+	
+	<!--이벤트 상세뷰 -->
+	<select id="eventView" parameterType="event" resultType="event">
+		SELECT * FROM EVENT WHERE E_ID = #{e_id}
+	</select>
+	
+	<!-- 이벤트 조회수 -->
+	<update id="hitupdate" parameterType="int">
+		UPDATE EVENT SET E_HIT = E_HIT + 1 WHERE E_ID = #{e_id}
+	</update>	
+	
+	<!--이벤트 리스트 -->
+	<select id="eventList" parameterType="event" resultType="event">
+		SELECT * FROM EVENT ORDER BY E_ID
+	</select>
+	
+	<!-- 
+	<select id="getBoardList_T" parameterType="event" resultType="event">
+		SELECT * FROM BOARD
+		WHERE TITLE LIKE '%'|| #{searchKeyword} ||'%' ORDER BY SEQ DESC
+	</select>
+	<select id="getBoardList_C" parameterType="event" resultType="event">
+		SELECT * FROM BOARD
+		WHERE CONTENT LIKE '%'|| #{searchKeyword} ||'%' ORDER BY SEQ DESC
+	</select>
+	 -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

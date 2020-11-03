@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<table id="search">
+        <tr>
+            <td id="search2"><input type="text" value="원하는 메뉴 혹은 점포를 검색하세요"/></td>
+            <td id="search3"><input type="button" value="검색"/></td>
+        </tr>
+    </table>
+    <hr>
+    <table id="store">
+		<tr>
+			<td><a href="#">  
+			<img width="100px" height="45px" src="../img/전체.jpg" alt="전체"></a>
+			<p><b>전체</b></p>
+			</td>
+			<td><a href="#">  
+			<img width="100px" height="45px" src="../img/한식.jpeg" alt="한식"></a>
+			<p><b>한식</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#">  
+			<img  width="100px" height="45px" src="../img/양식.jpeg" alt="양식"></a>
+			<p><b>양식</b></p>
+			</td>
+			<td><a href="#">  
+			<img width="100px" height="45px" src="../img/중식.jpeg" alt="중식"></a>
+			<p><b>중식</b></p>
+			<td>
+		</tr>
+		<tr>
+			<td><a href="#">  
+                <img width="100px" height="45px" src="../img/패스트푸드.jpeg" alt="패스트푸드"></a>
+                <p><b>패스트푸드</b></p>
+			</td>
+            <td><a href="#"> 
+                <img width="100px" height="45px" src="../img/커피.jpeg" alt="커피"></a>
+			    <p><b>커피</b></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+                <a href="#">  
+                <img width="100px" height="45px" src="../img/분식.jpg" alt="분식"></a>
+                <p><b>분식</b></p>
+            </td>
+            <td>
+                <a href="#"> 
+                <img width="100px" height="45px" src="../img/야식.jpg" alt="야식"></a>
+                <p><b>야식</b></p>
+			</td>
+		</tr>
+	</table>

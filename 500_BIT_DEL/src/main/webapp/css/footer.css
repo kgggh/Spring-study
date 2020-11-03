@@ -1,0 +1,33 @@
+@charset "UTF-8";
+html{
+	height:100%;
+}
+body{
+	height:100%; margin: 0;
+}
+	
+#pagecontainer{
+	position: relative;
+	min-height: 100vh;
+}
+#contentwrap{
+	padding-bottom: 0px;/*footer 높이*/
+}
+#footerreal{
+    text-align: center;
+    color: #333;;
+	/* position: absolute; */
+	bottom: 0;
+	width: 100%;
+	width: 100%;
+	background: rgba(17, 21, 230, 0);
+	height : 130px
+}
+#footer a{
+    color: #333;;
+
+}
+.menu_2 {
+	text-align:center;
+	margin:5px 0 5px 0;
+}

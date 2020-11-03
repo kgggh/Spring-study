@@ -1,0 +1,153 @@
+#container {
+	width: 1000px;
+		margin: 0 auto;
+}
+#searchCondition{
+	margin-left: 320px;
+    height: 30px;
+    width: 60px;
+}
+
+.input{
+	width: 98%;
+    height: 20px;
+    border:none;
+    font-family: 'Arial','돋움','Dotum',sans-serif !important;
+}
+
+#searchKeyword{
+	height: 25px;
+    width: 200px;
+}
+
+#searchbutton{
+height: 29px;
+    width: 50px;
+    
+}
+
+.left{
+	margin-left: 410px;
+}
+.paging .disable {
+	padding: 3px 7px;
+	color: silver;
+}
+.paging .now {
+	padding: 3px 7px;
+	
+}
+.paging li a:hover {
+	
+	color: white;
+}
+
+.center{
+	text-align: center;
+}
+
+#delbutton, #listbutton, #upbutton{
+	
+    margin-left: 20px;    
+    height: 30px;
+    width: 75px;
+    border: none;
+}
+
+#golist{
+ 
+    height: 30px;
+    width: 100px;
+    border: none;
+}
+
+
+.subtitle{
+	clear: both;
+    width: 218px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1em;
+}
+.bbs, .bbs th, .bbs td {
+    border: 0;
+    border-top: solid 1px #999;
+    border-bottom: solid 1px #b2b2b2;
+}
+
+.bbs a {
+    color: #383838;
+    text-decoration: none;
+}
+
+.bbs {
+    width: 900px;
+    border-bottom: 1px solid #999;
+    color: #666;
+    font-size: 12px;
+    table-layout: fixed;
+    margin-left: 50px;
+}
+
+.bbs caption {
+    display: none;
+}
+
+.bbs th {
+    padding: 5px 0 6px;
+    border-top: solid 1px #999;
+    border-bottom: solid 1px #b2b2b2;
+    background-color: #f1f1f4;
+    color: #333;
+    font-weight: bold;
+    line-height: 20px;
+    vertical-align: top;
+}
+.bbs td {
+    padding: 8px 0 9px;
+    border-bottom: solid 1px #d2d2d2;
+    text-align: center;
+    line-height: 18px;
+}
+
+.bbs .date, .bbs .hit .idx {
+    padding: 0;
+    font-family: Tahoma;
+    font-size: 11px;
+    line-height: normal;
+}
+
+.bbs .title {
+    text-align: left;
+    padding-left: 15px;
+    font-size: 13px;
+}
+
+.bbs .title .pic, .bbs .title .new {
+    margin: 0 0 2px;
+    vertical-align: middle;
+}
+
+.bbs .title a.comment {
+    padding: 0;
+    background: none;
+    color: #f00;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bbs tr.reply .title a {
+    padding-left: 16px;
+    /* background: url; 0 1px no-repeat; */
+}
+ul {
+	margin-left: 30%;
+  	padding: 0;
+}
+li {
+  	display: inline-block;
+}
+  

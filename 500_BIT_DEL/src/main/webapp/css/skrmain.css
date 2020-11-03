@@ -1,0 +1,43 @@
+#container {
+		width: 1000px;
+		margin: 0 auto;
+		
+	}
+#main{
+	background-color: #8ba6b3;
+    height: 1000px;
+    width: 100%;
+     position: absolute;
+      left: 0;
+       top:0;
+        padding: 0 50px; 
+     box-sizing: border-box;
+      box-shadow: 1px 1px 3px #ddd;
+}
+
+#title{
+	text-align: center;
+    margin: auto;
+    vertical-align: middle;
+    margin-top: 250px;
+    font-size: 5em;
+}
+
+.pageButton{
+	margin-top: 50px;
+    font-size: 1.5em;
+    width: 130px;
+    height: 140px;
+    white-space: pre-line;
+    background-color: rgb(59 99 138 / 26%);
+    border: none;
+    font-weight: bold;
+    border-radius: 30px;
+}
+    
+.modal{
+	display: none;
+}
+.center{
+	text-align: center;
+}

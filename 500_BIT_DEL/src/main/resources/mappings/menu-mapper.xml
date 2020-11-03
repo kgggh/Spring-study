@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MenuDAO">
+	<select id="selectAllmenu" parameterType="menu" resultType="menu">
+		SELECT * FROM MENU
+		WHERE S_ID = #{s_id} AND MENU_DISABLE = 0
+		ORDER BY MENU_ID  
+	</select>
+	<select id="selectS_id" parameterType="menu" resultType="int">
+		SELECT * FROM MENU
+		WHERE M_ID = #{m_id} 
+	</select>	
+	<select id="selectBestmenu" parameterType="menu" resultType="menu">
+		SELECT * FROM MENU
+		WHERE S_ID = #{s_id} AND MENU_BEST = 1 AND MENU_DISABLE = 0
+		ORDER BY MENU_ID 
+	</select>
+	
+	<select id="selectOnemenu" parameterType="menu" resultType="menu">
+		SELECT * FROM MENU
+		WHERE MENU_ID = #{menu_id} AND MENU_DISABLE = 0
+	</select>
+	
+	<select id="selectSortmenu" parameterType="menu" resultType="menu">
+		SELECT * FROM MENU
+		WHERE M_SORT_ID = #{m_sort_id} AND MENU_DISABLE = 0
+		ORDER BY MENU_ID 
+	</select>
+	<!-- menuInsert 페이지 처음 열 때 보여지는 메뉴목록 -->
+	<select id="selectFirstMenu" parameterType="menu" resultType="menu">
+		SELECT * FROM MENU 
+		WHERE M_SORT_ID = #{m_sort_id} AND MENU_DISABLE = 0
+		ORDER BY MENU_ID
+	</select>
+
+	<update id="updateMenu" parameterType="menu">
+		UPDATE MENU SET MENU_NAME = #{menu_name}, MENU_PRICE = #{menu_price}, MENU_PHOTO = #{menu_photo}, MENU_BEST= #{menu_best}, MENU_REFERENCE = #{menu_reference}, M_SORT_ID = #{m_sort_id}
+		WHERE menu_id = #{menu_id}
+	</update>
+	
+	<insert id="insertMenu" parameterType="menu">
+		INSERT INTO MENU ( MENU_NAME, MENU_PRICE, S_ID, MENU_RANK, MENU_PHOTO, MENU_BEST, MENU_REFERENCE, M_SORT_ID, MENU_DISABLE )
+		VALUES ( 
+				#{menu_name }, #{menu_price }, #{s_id}, 0, #{menu_photo }, #{menu_best } , #{menu_reference }, #{m_sort_id}, 0 )
+	</insert>
+
+	<update id="disableMenu" parameterType="int">
+		UPDATE MENU SET MENU_DISABLE = 1 WHERE MENU_ID = #{menu_id}
+	</update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ReviewDAO">
+
+	<select id="getAvg" parameterType="int" resultType="review">
+		SELECT * FROM REVIEW WHERE S_ID= #{s_id}
+	</select>
+	<select id="getC_Avg" parameterType="String" resultType="review">
+		SELECT * FROM REVIEW WHERE S_CLASSIFICATION= #{s_classification}
+	</select>
+	
+	<select id="getReviewCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM REVIEW WHERE S_ID = #{s_id}
+	</select>
+	
+	
+	<select id="getSReview" parameterType="int" resultType="skr_review">
+		SELECT r.r_id, r.s_id, mb.id, r.r_write_date, r.r_avg, m.menu_name, r.r_photo, r.r_content, r.skr_content
+		FROM MENU M JOIN ORDERS O ON M.MENU_ID = O.MENU_ID JOIN MEMBERS MB ON O.M_ID = MB.M_ID JOIN REVIEW R ON O.SCO_NUM = R.SCO_NUM
+		WHERE r.skr_content IS NULL AND S_ID = #{s_id}
+	</select>
+	
+	<select id="getSReviewN" parameterType="int" resultType="skr_review">
+		SELECT r.r_id, r.s_id, mb.id, r.r_write_date, r.r_avg, m.menu_name, r.r_photo, r.r_content, r.skr_content
+		FROM MENU M JOIN ORDERS O ON M.MENU_ID = O.MENU_ID JOIN MEMBERS MB ON O.M_ID = MB.M_ID JOIN REVIEW R ON O.SCO_NUM = R.SCO_NUM
+		WHERE r.skr_content IS NOT NULL AND S_ID = #{s_id}
+	</select>
+	<select id="storeReview" parameterType="int" resultType="review">
+		SELECT r.s_id, mb.id, r.r_write_date, r.r_avg, m.menu_name, r.r_photo, r.r_content, r.skr_content
+		FROM MENU M JOIN ORDERS O ON M.MENU_ID = O.MENU_ID JOIN MEMBERS MB ON O.M_ID = MB.M_ID JOIN REVIEW R ON O.SCO_NUM = R.SCO_NUM
+		WHERE S_ID = #{s_id}
+	</select>
+	<update id="skr_content" parameterType="skr_review">
+		UPDATE REVIEW SET SKR_CONTENT = #{skr_content}
+        WHERE R_ID = #{r_id}
+	</update>
+	<select id="storeAllReview" parameterType="map" resultType="review">
+		SELECT * FROM (SELECT ROWNUM R_NUM, R.*, M.ID FROM REVIEW R, MEMBERS M
+   						 WHERE S_ID = #{s_id} AND R.M_ID = M.M_ID ORDER BY R_WRITE_DATE DESC
+		) WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	<select id="storeAllReviewCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM REVIEW
+			WHERE S_ID = #{s_id}
+	</select>
+	<!-- 주문내역 총 수량 -->
+	<select id="ReviewCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM 
+				REVIEW R, (SELECT * FROM ORDERS WHERE M_ID = #{m_id} AND 
+						ROWID IN (SELECT MAX(ROWID) FROM ORDERS GROUP BY SCO_NUM) 
+						ORDER BY O_DATE) RO 
+		WHERE R.SCO_NUM = RO.SCO_NUM
+	</select>	
+	<select id="ReviewAdmin" parameterType="map" resultType="review">
+		SELECT * FROM (
+						SELECT ROWNUM R_NUM, R.*, M.MENU_NAME, S.S_NAME FROM 
+																		REVIEW R, (SELECT ROWNUM R_NUM, ORDERS.* FROM 
+																					ORDERS 
+																					WHERE M_ID = #{m_id} AND ROWID IN (SELECT MAX(ROWID) FROM ORDERS GROUP BY SCO_NUM) 
+																					ORDER BY O_DATE) RO, MENU M, STORE S 
+						WHERE R.SCO_NUM = RO.SCO_NUM AND RO.MENU_ID = M.MENU_ID AND S.S_ID = R.S_ID )
+		WHERE R_NUM BETWEEN #{begin} AND #{end}
+		ORDER BY R_NUM
+	</select>
+	<select id="AllReviewAdmin" parameterType="int" resultType="review">
+		SELECT * FROM 
+				REVIEW R, (SELECT * FROM ORDERS WHERE M_ID = #{m_id} AND 
+						ROWID IN (SELECT MAX(ROWID) FROM ORDERS GROUP BY SCO_NUM) 
+						ORDER BY O_DATE) RO 
+		WHERE R.SCO_NUM = RO.SCO_NUM
+	</select>	
+	<insert id="insertReview" parameterType="review">
+		INSERT INTO REVIEW ( SCO_NUM, S_ID, M_ID, R_CONTENT, R_AVG, R_PHOTO, R_WRITE_DATE,  S_CLASSIFICATION )
+		VALUES ( #{sco_num}, #{s_id}, #{m_id}, #{r_content}, #{r_avg}, #{r_photo}, SYSDATE, #{s_classification}  )
+	</insert>
+	<!-- 리뷰삭제 -->
+	<delete id="reviewDelete" parameterType="int">
+		DELETE FROM REVIEW WHERE R_ID = #{r_id}
+	</delete>
+<!-- 고객 점포별 평점 확인 -->
+	<select id="USAvg" parameterType="int" resultType="int">
+		SELECT AVG(R_AVG)
+			FROM REVIEW
+		  WHERE S_ID = #{s_id}
+	</select>
+	<!-- 리뷰갯수 -->
+	<select id="reviewTot" parameterType="int" resultType="int">
+		SELECT COUNT(*) 
+		FROM REVIEW
+		 WHERE S_ID = #{s_id}
+	</select>
+	<!-- 점주답글갯수 -->
+	<select id="skrReviewTot" parameterType="int" resultType="int">
+		SELECT COUNT(SKR_CONTENT) 
+			FROM REVIEW
+		  WHERE S_ID = #{s_id}
+	</select>					
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

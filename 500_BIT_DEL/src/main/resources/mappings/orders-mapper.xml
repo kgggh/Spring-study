@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="OrdersDAO">
+	<select id="getOrderCount" parameterType="int" resultType="Integer">
+		SELECT COUNT(*) FROM ORDERS WHERE S_ID = #{s_id} AND O_DATE BETWEEN ADD_MONTHS(SYSDATE, -1) AND SYSDATE
+	</select>
+<!-- 주문내역 총 수량 -->
+	<select id="OrderCount" parameterType="int" resultType="Integer">
+		SELECT COUNT(*) FROM ORDERS WHERE M_ID = #{m_id} AND ROWID IN (SELECT MAX(ROWID) FROM ORDERS GROUP BY SCO_NUM)
+	</select>	
+	<select id="OrderReview" parameterType="map" resultType="orders">
+		SELECT * FROM 
+            (SELECT  ROWNUM R_NUM, RO.*, M.MENU_NAME, S.S_NAME FROM (SELECT DISTINCT O.SCO_NUM, O.MENU_ID, O.S_ID, O.O_DATE, O.M_ID FROM 
+            															ORDERS O LEFT OUTER JOIN REVIEW R ON R.SCO_NUM = O.SCO_NUM 
+            															WHERE R.SCO_NUM IS NULL) RO, MENU M, STORE S
+            WHERE RO.MENU_ID = M.MENU_ID AND RO.S_ID = S.S_ID AND RO.M_ID = #{m_id} ORDER BY RO.O_DATE DESC)
+		WHERE R_NUM BETWEEN #{begin} AND #{end}
+		ORDER BY R_NUM
+	</select>
+	<insert id="insertOrder" parameterType="orders" >
+		INSERT INTO ORDERS ( SCO_NUM, O_DATE, MENU_ID, S_ID, O_PRICE, PAY_MEANS, M_ID, REQEUST, PAY_MET, CARD_COMPANY, CARD_NUM, OP_ID, B_AMOUNT )
+			VALUES ( #{sco_num }, SYSDATE, #{menu_id }, #{s_id }, #{o_price }, 0,  #{m_id }, 0, 0, 0, 0,  #{op_id }, #{b_amount }  )
+	</insert>	
+	<select id="maxScoNum" parameterType="int" resultType="int">
+		SELECT MAX(SCO_NUM) SCO_NUM FROM ORDERS WHERE M_ID = #{m_id}
+	</select>	
+	<!-- <select id="OrderReview" parameterType="map" resultType="orders">
+		SELECT O.*, M.MENU_NAME, S.S_NAME FROM (
+    								SELECT ROWNUM R_NUM, ORDERS.* FROM ORDERS 
+    								WHERE M_ID = #{m_id} AND ROWID IN (SELECT MAX(ROWID) FROM 
+    																ORDERS GROUP BY SCO_NUM) ORDER BY O_DATE
+    	) O, MENU M, STORE S 
+    	WHERE O.R_NUM BETWEEN #{begin} AND #{end} AND O.MENU_ID = M.MENU_ID AND S.S_ID = O.S_ID
+    	ORDER BY R_NUM
+	</select> -->
+</mapper>

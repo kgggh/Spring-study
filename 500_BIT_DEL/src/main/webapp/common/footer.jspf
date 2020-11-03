@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div>
+	<br><br>
+    <footer id="footerreal">
+        <div id="footer">
+            
+              <hr>
+              <a href="#">주문하기&nbsp;</a>
+              |&nbsp;
+              <a href="#">이벤트&nbsp;</a>
+              |&nbsp;
+              <a href="#">공지사항&nbsp;</a>
+              |&nbsp;
+              <a href="#">문의하기&nbsp;</a>
+              |&nbsp;
+              <a href="#">입점문의&nbsp;</a>
+              |&nbsp;
+              <a href="#">관리자</a>
+              <br>
+            <hr>
+              Copyright ⓒ <a href="#"> 1ㅎㅎㅎ</a> This site is powered by <a href="https://www.yogiyo.co.kr/" onclick="window.open(this.href); return false">1조^.^</a> /
+              Designed by <a href="박우범^^" onclick="window.open(this.href); return false">1조</a>
+            
+          </div>
+          <!-- footer close -->
+    </footer>
+</div>

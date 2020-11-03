@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+	<div id="drop">
+	<!-- 점포메뉴 -->
+	<br>
+        <ul id="nav">
+            <li><a href="getMenuList.do?s_id=${s_id }" class="active" style=" width:100px;"><span>MENU</span></a></li>
+        	<li><a href="storeInfo.do?s_id=${s_id }" style="width:100px;"><span>INFO</span></a>
+        	<li><a href="ReviewList.do?s_id=${s_id }" style="width:100px;"><span>REVIEW</span></a>
+        </ul>
+	</div>

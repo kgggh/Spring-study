@@ -1,0 +1,32 @@
+#container {
+		width: 1000px;
+		margin: 0 auto;
+		
+	}
+	/* h1, h3, p { text-align: center; } */
+table { border-collapse: collapse; 
+		table-layout:fixed;
+		word-break:break-all;
+		margin : auto; 
+		text-align:center;
+		border: none;
+		border: 1px solid #444444;
+		}
+tr { border: 1px solid #444444;}
+th { background-color: orange; }
+
+.size {	width: 800px;
+		overflow: hidden;
+		margin: 0 auto;
+		height: 200px;
+}
+.center { text-align: center; }
+.border-none, .border-none td { border: none; }
+
+.border input {
+	border : none;
+	height : 30px;
+	font-size: 15px;
+	background-color: white;
+}
+   

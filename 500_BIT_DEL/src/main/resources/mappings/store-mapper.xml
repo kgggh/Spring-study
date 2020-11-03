@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="delivery">
+
+	<select id="selectOneStore" parameterType="int" resultType="store">
+		SELECT * FROM STORE WHERE M_ID = #{m_id}
+	</select>
+	<update id="resumption" parameterType="int">
+		UPDATE STORE SET S_CLOSED = '아니요' WHERE S_ID = #{s_id}
+	</update>
+	
+	<update id="Closing_Apply" parameterType="int">
+		UPDATE STORE SET S_CLOSED = '예' WHERE S_ID = #{s_id}
+	</update>
+	
+	<select id="sysdate" parameterType="int" resultType="String">
+		SELECT TO_CHAR(SYSDATE -#{i}) FROM DUAL
+	</select>
+	<select id="salse_Management" parameterType="salse" resultType="orders">
+		SELECT * FROM ORDERS
+		WHERE S_ID= TO_NUMBER(#{s_id})  AND O_DATE = #{dt}
+	</select>
+	<select id="getStoreInfo" parameterType="int" resultType="store">
+		SELECT * FROM STORE WHERE S_ID = #{s_id}
+	</select>	
+	<!-- 배달지역에 해당하는 점포 수 구하기 -->	
+	<select id="StoreCount" parameterType="store" resultType="int">
+		<choose>
+			<when test="s_classification == 0">  <!-- 전체보기 -->
+			SELECT COUNT(*) FROM STORE S, TIP T 
+			WHERE T.S_ID = S.S_ID AND T.DONG = #{dong}
+			</when>
+			<when test="s_classification != 0"> <!-- 업종별 보기 -->
+			SELECT COUNT(*) FROM STORE S, TIP T 
+			WHERE T.S_ID = S.S_ID AND S.S_CLASSIFICATION = #{s_classification} AND T.DONG = #{dong}
+			</when>
+		</choose>
+	</select>	
+	<!-- 배달지역에 해당하는 s_id 가져오기 -->	
+	<select id="getStore" parameterType="store" resultType="store">
+		SELECT * FROM (SELECT ROWNUM R_NUM, S.*, T.DONG, T.TIP_PRICE FROM STORE S, TIP T 
+		<choose>
+			<when test="s_classification == 0">  <!-- 전체보기 -->
+			WHERE T.S_ID = S.S_ID AND T.DONG = #{dong}
+			</when>
+			<when test="s_classification != 0"> <!-- 업종별 보기 -->
+			WHERE T.S_ID = S.S_ID AND S.S_CLASSIFICATION = #{s_classification} AND T.DONG = #{dong}
+			</when>
+		</choose>
+		) WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>	
+</mapper>
+
+
+
+
+
+
+
+
+

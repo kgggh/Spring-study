@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MenuOptionDAO">
+	<select id="selectAllOption" parameterType="menu" resultType="menuoption">
+		SELECT * FROM M_OPTION
+		 WHERE MENU_ID = #{menu_id} AND OP_DISABLE = 0
+		 
+	</select>
+	
+	<select id="selectFirstOption" parameterType="menuoption" resultType="menuoption">
+		SELECT * FROM M_OPTION 
+		WHERE OP_S_ID = #{op_s_id} AND OP_DISABLE = 0
+		ORDER BY OP_ID
+	</select>
+	<select id="selectOptionCount" parameterType="menu" resultType="int">
+		SELECT COUNT(*) FROM M_OPTION WHERE MENU_ID = #{menu_id} AND OP_DISABLE = 0
+	</select>
+	<select id="selectSortOption" parameterType="menuoptionsort" resultType="menuoption">
+		SELECT * FROM M_OPTION
+		WHERE OP_S_ID = #{op_s_id} AND OP_DISABLE = 0
+		ORDER BY OP_ID 
+	</select>	
+	<update id="updateOption" parameterType="menuoption">
+		UPDATE M_OPTION SET OP_NAME = #{op_name}, OP_PRICE = #{op_price}, MENU_ID = #{menu_id}, OP_S_ID = #{op_s_id}
+		WHERE OP_ID = #{op_id}
+	</update>
+	
+	<insert id="insertOption" parameterType="menuoption">
+		INSERT INTO M_OPTION ( OP_NAME, OP_PRICE, MENU_ID, OP_S_ID, OP_DISABLE )
+		VALUES ( 
+				#{op_name}, #{op_price}, #{menu_id}, #{op_s_id}, 0 )
+	</insert>
+	<update id="disableOption" parameterType="menuoption">
+		UPDATE M_OPTION SET OP_DISABLE = 1 WHERE OP_ID = #{op_id}
+	</update>
+	<select id="selectOneOption" parameterType="int" resultType="menuoption">
+		SELECT * FROM M_OPTION
+		 WHERE OP_ID = #{op_id} AND OP_DISABLE = 0
+		 
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

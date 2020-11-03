@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CartDAO">
+
+	<select id="selectAllCart" parameterType="int" resultType="cart">
+		SELECT  B.*, M.MENU_NAME, OP.OP_NAME, OP.OP_PRICE FROM MENU M, BASKET B, M_OPTION OP 
+		WHERE B.MENU_ID = M.MENU_ID AND OP.OP_ID = B.OP_ID AND M_ID = #{m_id}
+		ORDER BY SCB_NUM
+	</select>
+	
+	<select id="selectMenuCart" parameterType="int" resultType="cart">
+		SELECT DISTINCT SCB_NUM, MENU_NAME, B_PRICE, B_AMOUNT 
+		FROM (SELECT B.*, M.MENU_NAME FROM BASKET B, MENU M WHERE B.MENU_ID = M.MENU_ID AND M_ID = #{m_id}) 
+		ORDER BY SCB_NUM
+	</select>	
+	<select id="selectCartlist" parameterType="cart" resultType="cart">
+		SELECT * FROM BASKET WHERE SCB_NUM = #{scb_num}
+	</select>
+	<select id="selectScbCart" parameterType="int" resultType="cart">
+		SELECT DISTINCT SCB_NUM FROM BASKET WHERE M_ID = #{m_id}
+	</select>
+	<select id="selectScbCartCount" parameterType="int" resultType="int">
+		SELECT COUNT(DISTINCT SCB_NUM) FROM BASKET WHERE M_ID = #{m_id}
+	</select>
+
+	<select id="maxScbNum" parameterType="int" resultType="int">
+		SELECT MAX(SCB_NUM) SCB_NUM FROM BASKET WHERE M_ID = #{m_id}
+	</select>
+	<insert id="insertCart" parameterType="cart" >
+		INSERT INTO BASKET ( SCB_NUM, S_ID, MENU_ID, B_PRICE, B_AMOUNT, M_ID, OP_ID )
+			VALUES ( #{scb_num }, #{s_id }, #{menu_id }, #{b_price }, #{b_amount } , #{m_id }, #{op_id } )
+	</insert>	
+	<delete id="deleteCart" parameterType="int">
+		DELETE FROM BASKET WHERE SCB_NUM = #{scb_num}
+	</delete>
+	<update id="updateCart" parameterType="cart">
+		UPDATE BASKET SET B_PRICE = #{b_price}, B_AMOUNT= #{b_amount}
+		WHERE B_ID = #{b_id}
+	</update>	
+<!-- 	<select id="selectMenuCart" parameterType="cart" resultType="int">
+		SELECT DISTINCT MENU_ID FROM BASKET WHERE SCB_NUM = #{scb_num}
+	</select> -->
+</mapper>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+  	<typeAlias alias="menu" type="com.spring.delivery.menu.service.MenuVO"/>
+  	<typeAlias alias="menusort" type="com.spring.delivery.menu.service.MenuSortVO"/>
+  	<typeAlias alias="menuoption" type="com.spring.delivery.menuoption.service.MenuOptionVO"/>
+  	<typeAlias alias="menuoptionsort" type="com.spring.delivery.menuoption.service.MenuOptionSortVO"/>
+	<typeAlias alias="member" type="com.spring.delivery.member.service.MembersVO"/> 	
+	<typeAlias alias="store" type="com.spring.delivery.store.service.StoreVO"/>
+	<typeAlias alias="dayoff" type="com.spring.delivery.store.service.DayoffVO"/>
+	<typeAlias alias="tip" type="com.spring.delivery.store.service.TipVO"/>
+	<typeAlias alias="orders" type="com.spring.delivery.orders.service.OrdersVO"/>
+	<typeAlias alias="salse" type="com.spring.delivery.orders.service.SalseVO"/> 	
+ 	<typeAlias alias="notice" type="com.spring.delivery.notice.service.NoticeVO"/> 	
+	<typeAlias alias="event" type="com.spring.delivery.event.service.EventVO"/>
+  	<typeAlias alias="coupon" type="com.spring.delivery.coupon.service.CouponVO"/>  	 	
+  	<typeAlias alias="cart" type="com.spring.delivery.cart.service.CartVO"/>  	 	
+  	<typeAlias alias="favorite" type="com.spring.delivery.favorite.service.FavoriteVO"/>
+  	<typeAlias alias="review" type="com.spring.delivery.review.service.ReviewVO"/> 
+  	<typeAlias alias="couponbox" type="com.spring.delivery.coupon.service.CouponBoxVO"/>
+  	<typeAlias alias="skr_review" type="com.spring.delivery.review.service.Skr_ReviewVO"/>  	 	
+  </typeAliases>
+  
+  <mappers>
+    <mapper resource="mappings/menu-mapper.xml"/>
+    <mapper resource="mappings/menusort-mapper.xml"/>
+    <mapper resource="mappings/menuoptionsort-mapper.xml"/>
+    <mapper resource="mappings/menuoption-mapper.xml"/>
+    <mapper resource="mappings/member-mapper.xml"/>
+ 	<mapper resource="mappings/notice-mapper.xml"/>
+ 	<mapper resource="mappings/store-mapper.xml"/>	
+ 	<mapper resource="mappings/event-mapper.xml"/>
+    <mapper resource="mappings/coupon-mapper.xml"/>	
+    <mapper resource="mappings/orders-mapper.xml"/>	
+    <mapper resource="mappings/dayoff-mapper.xml"/>	
+    <mapper resource="mappings/tip-mapper.xml"/>	
+    <mapper resource="mappings/cart-mapper.xml"/>	
+    <mapper resource="mappings/favorite-mapper.xml"/>	
+    <mapper resource="mappings/review-mapper.xml"/>
+  </mappers>
+</configuration>
+
+
+
+

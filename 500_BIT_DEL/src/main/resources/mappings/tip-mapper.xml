@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="TipDAO">
+
+	<select id="getTip" parameterType="int" resultType="tip">
+		SELECT * FROM TIP WHERE S_ID = #{s_id}
+	</select>	
+	<!-- 배달지역에 해당하는 점포 수 구하기 -->	
+	<select id="StoreCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TIP WHERE DONG = #{dong}
+	</select>	
+	<!-- 배달지역에 해당하는 s_id 가져오기 -->	
+	<select id="getS_id" parameterType="String" resultType="int">
+		SELECT S_ID FROM TIP WHERE DONG = #{dong}
+	</select>
+	<select id="getDongTip" parameterType="tip" resultType="tip">
+		SELECT * FROM TIP WHERE S_ID = #{s_id} AND DONG = #{dong}
+	</select>	
+</mapper>
+
+
+
+
+
+
+
+
+

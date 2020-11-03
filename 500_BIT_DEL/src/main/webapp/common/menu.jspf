@@ -1,0 +1,117 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/slide.css">
+<link rel="stylesheet" href="css/footer.css">
+<div class="header">
+<h1 id="bitdelivery"><a href="main.jsp">BITDELIVERY</a></h1>
+    <br>
+    <div class="userInfo">
+    	<ul id="nav">
+    	<c:if test="${m_id == 0 }">
+            <li id="login"><a href="login.jsp" class="active" style=" width:100px;"><span>LOGIN</span></a></li>
+            <li><a href="signupAgree.jsp" style="width:100px;"><span>JOIN</span></a>
+        </c:if>
+    	<c:if test="${m_id !=0 }">
+            <li style=" width:300px; right: -1200px;"><span>${loginMember.name }님 환영합니다. </span></li>
+            <br>
+            <li id="login"><a href="logout.do" class="active" style=" width:100px;"><span>LOGOUT</span></a></li>
+            <li><a href="signupAgree.jsp" style="width:100px;"><span>JOIN</span></a>
+            <li ><a href="myPage.jsp" class="active" style=" width:100px;"><span>MYPAGE</span></a></li>
+            <li ><a href="getCartList.do" class="active" style="width:50px;"><img src="img/cart.png"/></a></li>
+        </c:if>
+        </ul>
+    </div>    
+    <hr>
+    <div id="drop">
+        <ul id="nav">
+            <li><a href="storeList.do?s_classification=0" class="active" style=" width:200px;"><span>DELIVERY</span></a>
+               <!--  <ul class="menu_sub">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                </ul> -->
+            </li>
+        	<li><a href="event.do" style="width:200px;"><span>이벤트</span></a>
+	            <!-- <ul class="menu_sub">
+	                <li><a href="#">1</a></li>
+	                <li><a href="#">2</a></li>
+	                <li><a href="#">3</a></li>
+	            </ul> -->
+	        </li>
+	        <li><a href="getNoticeList.do"  style="width:200px;"><span>공지사항</span></a>
+	           <!--  <ul class="menu_sub">
+	                <li><a href="getNoticeList.do">1</a></li>
+	                <li><a href="getNoticeList.do">2</a></li>
+	                <li><a href="getNoticeList.do">3</a></li>
+	            </ul> -->
+	        </li>
+	        <li><a href="#"  style="width:200px;"><span>문의하기</span></a>
+	           <!--  <ul class="menu_sub">
+	                <li><a href="#">1</a></li>
+	                <li><a href="#">2</a></li>
+	                <li><a href="#">3</a></li>
+	            </ul> -->
+	        </li>
+        </ul>
+    </div>
+</div>
+    <hr>
+	<p></p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

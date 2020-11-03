@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="NoticeDAO">
+
+<insert id="insertNotice" parameterType="notice">
+		INSERT INTO NOTICE (N_TITLE, N_CONTENT, N_DATE, N_HIT)
+		VALUES (#{n_title}, #{n_content}, SYSDATE, 0)
+	</insert>
+	
+	<update id="updateNotice" parameterType="notice">
+		UPDATE NOTICE SET N_TITLE = #{n_title}, N_CONTENT = #{n_content}
+		WHERE N_ID = #{n_id}
+	</update>
+	
+	<update id="updateNoticeHit" parameterType="int">
+		UPDATE NOTICE SET N_HIT = N_HIT + 1 WHERE N_ID = #{n_id}
+	</update>
+	
+	<delete id="deleteNotice" parameterType="notice">
+		DELETE FROM NOTICE WHERE N_ID = #{n_id}
+	</delete>
+	
+	<select id="getNotice" parameterType="notice" resultType="notice">
+		SELECT * FROM NOTICE WHERE N_ID = #{n_id}
+	</select>
+	
+	<select id="getNoticeList" parameterType="notice" resultType="notice">
+		SELECT * FROM NOTICE
+		WHERE 1=1 
+		<if test="searchCondition == 'N_TITLE' ">
+			AND N_TITLE LIKE '%'|| #{searchKeyword} ||'%' ORDER BY N_DATE DESC
+		</if>
+		<if test="searchCondition == 'N_CONTENT' ">
+			AND N_CONTENT LIKE '%'|| #{searchKeyword} ||'%' ORDER BY N_DATE DESC
+		</if>
+	</select>
+	
+	<select id="getNoticeList_T" parameterType="notice" resultType="notice">
+		SELECT * FROM
+			(SELECT ROWNUM R_NUM, N.* FROM (SELECT * FROM NOTICE WHERE N_TITLE LIKE '%'||#{searchKeyword}||'%'
+			        ORDER BY N_DATE DESC) N)
+			WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	<select id="getNoticeList_TC" parameterType="notice" resultType="notice">
+		SELECT * FROM
+			(SELECT ROWNUM R_NUM, N.* FROM (SELECT * FROM NOTICE WHERE N_CONTENT LIKE '%'||#{searchKeyword}||'%'
+			        ORDER BY N_DATE DESC) N)
+			WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	
+	<select id="getNoticeCount" resultType="int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+	
+	<select id="getNoticeCount_T" parameterType="notice" resultType="int">
+	SELECT COUNT (*) FROM NOTICE WHERE
+                         N_TITLE  LIKE '%'||#{searchKeyword}||'%'
+	</select>
+	<select id="getNoticeCount_TC" parameterType="notice" resultType="int">
+	SELECT COUNT (*) FROM NOTICE WHERE
+                         N_CONTENT  LIKE '%'||#{searchKeyword}||'%'
+	</select>
+
+	
+	<select id="getNoticePageList" parameterType="Map" resultType="notice" >
+		SELECT * FROM
+    		(SELECT ROWNUM R_NUM, N.*
+			       FROM (SELECT * FROM NOTICE ORDER BY N_DATE DESC) N)
+                    
+		WHERE R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+</mapper>

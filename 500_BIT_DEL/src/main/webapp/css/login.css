@@ -1,0 +1,76 @@
+.loginbutton{
+	border: none;
+    background-color: white;
+    
+	}
+
+#idcheck{
+	margin-left: 380px;
+}
+#container {
+	width: 1000px;
+	margin: 0 auto;
+	
+}
+.center{
+	text-align: center;
+}
+
+
+
+.subtitle{
+	clear: both;
+    width: 218px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1em;
+}
+
+#check{
+	height: 20px;
+    width: 75px;
+    border: none;
+    margin-left: 110px;  
+}
+
+.submit {
+	margin-left: 450px;
+    width: 100px;
+    height: 30px;
+    border: none;
+}
+
+#joinbutton{
+	float: left;
+    margin-left: 415px;  
+    height: 30px;
+    width: 75px;
+    border: none;
+}
+
+#cancle{
+	float: left;
+    margin-left: 20px;    
+    height: 30px;
+    width: 75px;
+    border: none;
+}
+
+table {     
+	border: none;
+	table-layout:fixed;
+	word-break:break-all;
+	margin : auto; 
+	text-align:center;
+	border: none;
+	width :450px ;
+	height: 65px;
+}
+
+text{
+	width: 90%;
+	height: 90%;
+}

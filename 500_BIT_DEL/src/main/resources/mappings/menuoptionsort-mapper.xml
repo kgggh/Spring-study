@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MenuOptionSortDAO">
+	<select id="selectOptionSort" parameterType="menu" resultType="menuoptionsort">
+		SELECT * FROM OP_SORT WHERE MENU_ID = #{menu_id} AND OP_S_DISABLE = 0
+		ORDER BY OP_S_RANK
+	</select>
+	<select id="selectOptionSortCount" parameterType="menu" resultType="int">
+		SELECT COUNT(*) FROM OP_SORT WHERE MENU_ID = #{menu_id} AND OP_S_DISABLE = 0
+	</select>	
+	<insert id="insertOptionSort" parameterType="menuoptionsort">
+		INSERT INTO OP_SORT (OP_S_NAME, OP_S_RANK, MENU_ID, OP_S_DISABLE )
+		VALUES ( #{op_s_name} , (SELECT NVL(MAX(OP_S_RANK),0)+1 FROM OP_SORT WHERE MENU_ID = #{menu_id} ) , #{menu_id}, 0 )
+	</insert>
+	<update id="disableOpSort" parameterType="int">
+		UPDATE OP_SORT SET OP_S_DISABLE = 1 
+			WHERE OP_S_ID = #{op_s_id}
+	</update>
+	<select id="selectFirstOpSortID" parameterType="menu" resultType="menuoptionsort">
+		SELECT OP_S_ID FROM OP_SORT 
+					WHERE MENU_ID = #{menu_id} AND OP_S_RANK =
+					 (SELECT MIN(OP_S_RANK) FROM OP_SORT WHERE MENU_ID = #{menu_id} AND OP_S_DISABLE = 0 )
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<table id="id">
+        <tr>
+            <td>
+                <ul class="bxslider">
+                    <li><a href="#"><img src="img/점포광고.jpeg" alt="1" title="이미지1"></a></li>
+                    <li><a href="#"><img src="../img/입점광고.jpeg" alt="2" title="이미지2"></a></li>
+                    <li><a href="#"><img src="../img/전체.jpg" alt="3" title="이미지3"></a></li>
+                </ul>
+            </td>
+            <td>
+                <ul class="bxslider">
+                    <li><a href="#"><img src="../img/점포광고.jpeg" alt="1" title="이미지1"></a></li>
+                    <li><a href="#"><img src="../img/입점광고.jpeg" alt="2" title="이미지2"></a></li>
+                    <li><a href="#"><img src="../img/전체.jpg" alt="3" title="이미지3"></a></li>
+                </ul>
+            </td>
+        </tr>    
+    </table>
+<hr>

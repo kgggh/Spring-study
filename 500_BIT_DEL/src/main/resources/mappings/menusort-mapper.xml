@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MenuSortDAO">
+	<select id="selectAllmenuSort" parameterType="menu" resultType="menusort">
+		SELECT * FROM MENU_SORT
+		WHERE S_ID = #{s_id} AND M_S_DISABLE = 0
+		ORDER BY M_S_RANK
+	</select>
+	
+	
+	<insert id="insertMenuSort" parameterType="menusort">
+		INSERT INTO MENU_SORT ( M_S_NAME, M_S_RANK, S_ID, M_S_DISABLE )
+		VALUES (
+				#{m_s_name} , (SELECT NVL(MAX(M_S_RANK),0)+1 FROM MENU_SORT WHERE S_ID = #{s_id} ) , #{s_id}, 0 )
+	</insert>
+	
+	<update id="disableMenuSort" parameterType="int">
+		UPDATE MENU_SORT SET M_S_DISABLE = 1 
+			WHERE M_SORT_ID = #{m_sort_id}
+	</update>
+	<select id="selectFirstSortID" parameterType="menu" resultType="int">
+		SELECT M_SORT_ID FROM MENU_SORT 
+			WHERE S_ID = #{s_id}  AND M_S_RANK =
+				(SELECT MIN(M_S_RANK) FROM MENU_SORT WHERE S_ID = #{s_id} AND M_S_DISABLE = 0)
+	</select>	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
