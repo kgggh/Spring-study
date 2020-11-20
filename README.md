@@ -18,7 +18,7 @@
 Home 화면
 -----------------------------
 
-<img width ="700" src="https://user-images.githubusercontent.com/68227318/99757710-4a037880-2b33-11eb-89b2-6a89d7db4700.jpg">
+<img width ="100%" src="https://user-images.githubusercontent.com/68227318/99757710-4a037880-2b33-11eb-89b2-6a89d7db4700.jpg">
 
 Home화면에서 접근하려는 유저의 구분을 고객,점주로 나눴습니다.
 
