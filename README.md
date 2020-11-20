@@ -20,7 +20,9 @@
 
 사용자로선 이벤트를 참여하여 쿠폰 발급 및 발급받은 쿠폰 조회(사용 유무,기한,적용구분(금액))기능을 구현했습니다.
 
-java,Spring,javaScript,mybatis,tomcat,jquery,ajax 를 사용해 프로젝트를 진행하였고, slack,aquerytool,googlemeet,zum-us등 각종 툴을 사용하며 프로젝트를 진행했습니다.
+java,Spring,javaScript,mybatis,tomcat,jquery,ajax 를 사용해 프로젝트를 진행하였고,
+
+slack,aquerytool,googlemeet,zum-us등 비대면 기간 효율적인 협업을 위해 각종 툴을 사용하며 프로젝트를 진행했습니다.
 
 <br><br><br><br><br>
 
