@@ -17,6 +17,6 @@
 
 Screenshots
 -----------------------------
-<div>
-<img width ="200px" src="https://user-images.githubusercontent.com/68227318/99757710-4a037880-2b33-11eb-89b2-6a89d7db4700.jpg"
-</div>
+
+<img width ="500" src="https://user-images.githubusercontent.com/68227318/99757710-4a037880-2b33-11eb-89b2-6a89d7db4700.jpg"
+
