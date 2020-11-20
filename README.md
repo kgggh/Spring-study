@@ -25,20 +25,36 @@ Home 화면
 Home화면에서 접근하려는 유저의 편의를 위해 구분을 고객,점주로 나눴습니다.
 
 
+
 Main 
 ---------------------------------
 <img width ="100%" src="https://user-images.githubusercontent.com/68227318/99757610-1d4f6100-2b33-11eb-9601-d9efcd939506.png">
+
+배달 지역을 설정해 배달 가능 한 점포를 표현했습니다.
+
 
 Event List(이벤트 목록)
 ---------------------------------
 <img width ="100%" src="https://user-images.githubusercontent.com/68227318/99759142-d020be80-2b35-11eb-80a3-4a770af92340.jpg">
 
 
+등록된 이벤트 목록을 표현했습니다. 유저일땐 이벤트 조회만 가능 하고 등록 버튼이 표시 되지 않고, 관리자로 접속시에만 접근 해두게 했습니다.  
+ 
+
 Event View(이벤트 상세페이지, 발급)
 ---------------------------------
-<img width ="100%" src="https://user-images.githubusercontent.com/68227318/99757610-1d4f6100-2b33-11eb-9601-d9efcd939506.png">
+<img width ="100%" src="https://user-images.githubusercontent.com/68227318/99762078-fd23a000-2b3a-11eb-9da6-b38eb8d396b1.jpg">
 
 <img width ="100%" src="https://user-images.githubusercontent.com/68227318/99757651-335d2180-2b33-11eb-83c2-b7642650ffbb.jpg">
+
+진행 중인 이벤트의 상세 내용을 담고 있으며, 하단부분에 유저가 쿠폰 발급을 받을 수 있도록 발급 버튼이 존재하며 수정 삭제 버튼은 접근 제한을 두어,
+
+관리자일때만 수정,삭제 할 수 있도록 하였습니다.
+
+
+
+<img width ="100%" src="https://user-images.githubusercontent.com/68227318/99757651-335d2180-2b33-11eb-83c2-b7642650ffbb.jpg">
+
 
 Event Write(이벤트 등록) 
 ---------------------------------
