@@ -9,11 +9,12 @@
     <br>
     <div class="userInfo">
     	<ul id="nav">
+  
     	<c:if test="${m_id == 0 }">
             <li id="login"><a href="login.jsp" class="active" style=" width:100px;"><span>LOGIN</span></a></li>
             <li><a href="signupAgree.jsp" style="width:100px;"><span>JOIN</span></a>
         </c:if>
-    	<c:if test="${m_id !=0 }">
+    	<c:if test="${m_id != 0 }">
             <li style=" width:300px; right: -1200px;"><span>${loginMember.name }님 환영합니다. </span></li>
             <br>
             <li id="login"><a href="logout.do" class="active" style=" width:100px;"><span>LOGOUT</span></a></li>
